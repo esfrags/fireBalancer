@@ -98,4 +98,8 @@ sudo usermod -aG docker $USER
 # 8. Run a basic example
 sudo -E env PATH=$PATH python3 examples/containernet_example.py
 
+## ONOS setup
+docker pull onosproject/onos
+
+docker run -d --name onos -p 8181:8181 -p 8101:8101 -p 6653:6653 onosproject/onos
 
