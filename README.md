@@ -14,6 +14,22 @@
 - `metrics-exporter/`: Extracción de métricas desde ONOS
 - `grafana-dashboards/`: Dashboards para visualización
 
+fireBalancer/
+├── docker-compose.yml
+├── containernet/
+│   └── (custom topologies, scripts, configs)
+├── grafana/
+│   └── (optional dashboards, provisioning)
+├── influxdb/
+│   └── (optional config, init scripts)
+├── onos/
+│   └── (optional config, apps)
+├── scripts/
+│   └── setup.sh
+├── README.md
+└── .gitignore
+
+
 ## Componentes
 
 | Software             | Función                                                               |
