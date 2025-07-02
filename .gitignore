@@ -1,5 +1,0 @@
-# Ignore Docker volumes and runtime data
-influxdb_data/
-grafana_data/
-*.env
-*.log
