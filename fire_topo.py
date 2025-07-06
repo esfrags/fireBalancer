@@ -22,6 +22,7 @@ class FireTopo(Topo):
 def run():
     topo = FireTopo()
     controller = RemoteController('c0', ip='127.0.0.1', port=6653)
+
     net = Mininet(topo=topo, controller=controller, switch=OVSSwitch, autoSetMacs=True)
 
     net.start()

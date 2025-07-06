@@ -34,5 +34,20 @@ firebalancer/
 | **Grafana**          | Visualización en tiempo real de métricas y reglas activas             |
 
 
+## Usage
+From ubuntu vm with mininet:
 
+docker pull onosproject/onos
+docker run -d --name onos -p 6653:6653 -p 8181:8181 -p 8101:8101 onosproject/onos
+
+cd fireBalancer
+sudo python3 fire_topo.py
+
+docker exec -it onos /bin/bash
+
+in another terminal: (pwd rocks)
+ssh -p 8101 onos@localhost
+app activate org.onosproject.openflow
+app activate org.onosproject.fwd
+app activate org.onosproject.hostprovider
 
