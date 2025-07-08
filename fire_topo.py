@@ -5,6 +5,8 @@ from mininet.node import RemoteController, OVSSwitch
 from mininet.topo import Topo
 from mininet.cli import CLI
 from mininet.log import setLogLevel
+import os
+import subprocess
 
 class FireTopo(Topo):
     def build(self):
@@ -20,12 +22,20 @@ class FireTopo(Topo):
         self.addLink(h2, s1)
 
 def run():
+    # start onos controller from script
+    os.system('onos-app/start_onos.sh')
+    
+    # start mininet with custom topology
     topo = FireTopo()
     controller = RemoteController('c0', ip='127.0.0.1', port=6653)
 
     net = Mininet(topo=topo, controller=controller, switch=OVSSwitch, autoSetMacs=True)
-
     net.start()
+
+    # Forzar OpenFlow13 en el switch
+    print("Forzando OpenFlow13 en el switch s1...")
+    subprocess.run("ovs-vsctl set bridge s1 protocols=OpenFlow13", shell=True)
+
     print("Red levantada. Puedes probar con 'pingall'")
     CLI(net)
     net.stop()

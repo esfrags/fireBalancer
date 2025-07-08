@@ -1,7 +1,7 @@
 ## Arquitectura
        ┌────────────────────┐
        │      Mininet       │
-       │  (topología SDN)   │
+       │  (SDN topology)    │
        └───────┬────────────┘
                │
          ┌─────▼──────┐
@@ -10,14 +10,14 @@
       ┌────────┴────────┐
       │                 │
   ┌───▼───┐         ┌───▼───┐
-  │ Host1 │         │ Host2 │   ← procesos virtuales
+  │ Host1 │         │ Host2 │   ← virtual processes
   └───────┘         └───────┘
                ▲
                │
         OpenFlow (6653)
                │
          ┌─────▼─────┐
-         │   ONOS    │ ← en contenedor Docker
+         │   ONOS    │ ← on Docker Container
          └───────────┘
                │
          REST API (8181)
