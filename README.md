@@ -37,8 +37,9 @@ firebalancer/
 ## Usage
 From ubuntu vm with mininet:
 
-docker pull onosproject/onos
-docker run -d --name onos -p 6653:6653 -p 8181:8181 -p 8101:8101 onosproject/onos
+Done by start_onos.sh:
+    docker pull onosproject/onos
+    docker run -d --name onos -p 6653:6653 -p 8181:8181 -p 8101:8101 onosproject/onos
 
 cd fireBalancer
 sudo python3 fire_topo.py
@@ -51,3 +52,6 @@ app activate org.onosproject.openflow
 app activate org.onosproject.fwd
 app activate org.onosproject.hostprovider
 
+## ONOS GUI
+To acces ONOS GUI: go to VSCode ports, click on localhost:8181, add on opened browser path /onos/ui
+press 'h' in browser window to show hosts
