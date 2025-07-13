@@ -27,6 +27,13 @@ def run():
     # start onos controller from script
     os.system('onos-app/start_onos.sh')
     
+    # start metrics exporter in background
+    exporter_proc = subprocess.Popen(
+        ['python3', 'metrics-exporter/export_to_influx.py'],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE
+    )
+    
     # start mininet with custom topology
     topo = FireTopo()
     controller = RemoteController('c0', ip='127.0.0.1', port=6653)
@@ -41,6 +48,9 @@ def run():
     print("Red levantada. Puedes probar con 'pingall'")
     CLI(net)
     net.stop()
+
+    # Terminate the exporter process when done
+    exporter_proc.terminate()
 
 if __name__ == '__main__':
     setLogLevel('info')
